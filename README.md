@@ -1,4 +1,6 @@
-**DEPENDENCY NOTE:** This Python script depends on the 3rd party modules `lxml`, `requests` and `pyperclip` for some of its functionality. If you do not have these modules installed with your Python installation, you may still use the program; however, updating the Java class database (`lxml`/`requests`) and utilizing the `-c`option (`pyperclip`) is disabled.
+This program was updated to automatically determine the necessary imports. Only import mode was kept. The rest is from @winterweird's implementation (as is the text below).
+
+**DEPENDENCY NOTE:** This Python script depends on the 3rd party modules `lxml`, and `requests`for some of its functionality. If you do not have these modules installed with your Python installation, you may still use the program; however, updating the Java class database (`lxml`/`requests`) is disabled.
 
 This script has been tested and is known to work with Python versions 2.6, 3.3 and 3.4, and it should theoretically work with any Python 2.x/3.x installation with all the required modules installed.
 
@@ -49,9 +51,7 @@ Please take note that aside from `-a` mode, only one mode can be in effect at th
 
 ### NOTE:
 
-The included `java_classes.list` file should contain all of the standard library classes and the classes for Android app development as of 2016/06/20. It may be incomplete, contain erroneous information, or be otherwise unsuitable for your purposes. This software comes with no warranty or guarantee. Use at own risk.
-
-Sincerely, Butterbeard Studios.
+The included `java_classes.list` file should contain all of the standard library classes and the classes for Android app development as of 2018-10-18. It may be incomplete, contain erroneous information, or be otherwise unsuitable for your purposes. This software comes with no warranty or guarantee. Use at own risk.
 
 #### UPDATE 2016/06/22 Middle-Of-The-Night:00
 
