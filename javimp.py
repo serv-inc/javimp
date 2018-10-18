@@ -4,7 +4,7 @@
 # find probable java import statements for a given list of
 # classes specified by root name
 
-import sys, os, fileinput, re, time, subprocess
+import sys, os, fileinput, re, subprocess
 MISSING_3RD_PARTY_MODULES = []
 
 try:
@@ -94,7 +94,7 @@ if __name__ == '__main__':
                                      stderr=subprocess.PIPE)
             (out, err) = javac.communicate()
             to_import = set()
-            for line in err.split("\n"):
+            for line in err.decode().split("\n"):
                 if "symbol:" in line:
                     to_import.add(line.split(" ")[-1])
 
@@ -105,13 +105,14 @@ if __name__ == '__main__':
                     possibles = []
                     with open(os.path.join(FILELOCATION, "java_classes.list"),
                               "r") as classlist:
-                        for line in classlist:
-                            if line.endswith("." + current + "\n"):
-                                possibles.append(line.rstrip("\n"))
+                        for cls in classlist:
+                            if cls.endswith("." + current + "\n"):
+                                possibles.append(cls.rstrip("\n"))
                     try:
                         out = "import {};".format(possibles[0])
                     except IndexError:
                         sys.stderr.write("no import found for: " + current)
+                        sys.stderr.write("call this without files to update")
                         continue
                     if possibles[1:]:
                         out += "  // alternative imports:"
