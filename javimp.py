@@ -95,7 +95,8 @@ if __name__ == '__main__':
             (out, err) = javac.communicate()
             to_import = set()
             for line in err.decode().split("\n"):
-                if "symbol:" in line:
+                # if this fails, try some regex like ' symbol:[ ]+class' (SPACE)
+                if "  symbol:" in line and " class " in line:
                     to_import.add(line.split(" ")[-1])
 
             # insert mode is special, so we handle it separately
